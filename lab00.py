@@ -21,7 +21,7 @@ def downloading(url_path, name):
 def writing(names, direct):
     threads = []
     for nmb, item in enumerate(names):
-        file_name = direct + str(nmb) + ".html"
+        file_name = direct + str(nmb) + ".xml"
         t = Thread(target=downloading, args = (url_list[nmb], file_name))
         threads.append(t)
         t.start()
