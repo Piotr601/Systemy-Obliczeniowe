@@ -4,7 +4,7 @@ import numpy as np
 
 setup(
     include_dirs=[np.get_include()],
-    name="convolve",
-    ext_modules=cythonize("convolve.pyx"),
+    name="Z3x",
+    ext_modules=cythonize("Z3x.pyx"),
     zip_safe=False,
 )

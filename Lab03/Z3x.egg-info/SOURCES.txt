@@ -1,0 +1,7 @@
+Z3x.c
+setup.py
+Z3x.egg-info/PKG-INFO
+Z3x.egg-info/SOURCES.txt
+Z3x.egg-info/dependency_links.txt
+Z3x.egg-info/not-zip-safe
+Z3x.egg-info/top_level.txt
