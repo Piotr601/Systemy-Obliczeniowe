@@ -46,9 +46,6 @@ def speed_convolve(np.ndarray f, np.ndarray g):
         raise ValueError("Only odd dimensions on filter supported")
     assert f.dtype == DTYPE and g.dtype == DTYPE
 
-    cdef long [:, :] f_view = f
-    cdef long [:, :] g_view = g
-
     cdef int vmax = f.shape[0]
     cdef int wmax = f.shape[1]
     cdef int smax = g.shape[0]
@@ -57,12 +54,16 @@ def speed_convolve(np.ndarray f, np.ndarray g):
     cdef int tmid = tmax // 2
     cdef int xmax = vmax + 2 * smid
     cdef int ymax = wmax + 2 * tmid
-    cdef np.ndarray h = np.zeros([xmax, ymax], dtype=DTYPE)
-    cdef long [:, :] h_view = h
     cdef int x, y, s, t, v, w
 
+    cdef np.ndarray h = np.zeros([xmax, ymax], dtype=DTYPE)
+    cdef long [:, :] h_view = h
+    cdef long [:, :] f_view = f
+    cdef long [:, :] g_view = g
+    
     cdef int s_from, s_to, t_from, t_to
     cdef np.int_t value
+
     
     for x in prange(xmax, nogil=True):
         for y in prange(ymax):
